@@ -1,4 +1,7 @@
 
+using BOOK_STORE_PORTAL_Project_.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace BOOK_STORE_PORTAL_Project_
 {
     public class Program
@@ -8,7 +11,7 @@ namespace BOOK_STORE_PORTAL_Project_
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.Services.AddDbContext<BookStorePortalDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection")));
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
